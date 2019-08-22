@@ -1,0 +1,17 @@
+body{
+	background: #dddcdc !important;
+}
+
+table{
+  background: #fff !important;
+  margin-top: 16px;
+  padding: 5px;
+  width: 98% !important;
+  margin: auto !important;
+  margin-top: 19px !important;
+}
+
+table tr td,
+table tr th{
+	text-align: right;
+}

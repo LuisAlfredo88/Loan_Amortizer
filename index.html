@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Amortizador</title>
+    <meta name="theme-color" content="#4DBA87">
+
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="dr_easy">
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Encuentra el doctor que buscas para agendar una cita.">
+    <meta name="author" content="Ansonika">
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
+    <link href="./css/style.css" rel="stylesheet" type="text/css" />    
+  </head>
+
+  
+  <body>
+
+  <div id="preloader" class="Fixed">
+    <div data-loader="circle-side"></div>
+  </div>
+  <!-- /Preload-->
+
+  <div id="app">
+    <header class="header_sticky">
+
+    </header>
+    <!-- /header -->
+
+    <main>
+      <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+
+          <label class="sr-only" for="inlineFormInputGroupUsername2">Tasa</label>
+          <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input type="number" :value="interest_rate" @input="change_value" class="form-control" id="interest_rate" placeholder="Tasa de interés">
+          </div>
+
+          <label class="sr-only" for="inlineFormInputGroupUsername2">Monto</label>
+          <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input type="number" :value="amount" @input="change_value" class="form-control" id="amount" placeholder="Monto">
+          </div>
+
+          <label class="sr-only" for="inlineFormInputGroupUsername2">Cantidad de meses</label>
+          <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input type="number" :value="qty_months" @input="change_value" class="form-control" id="qty_months" placeholder="Cantidad de meses">
+          </div>
+
+          <button type="button" class="btn btn-info mb-2" v-on:click="calculate">Generar</button>
+          <button type="button" class="btn btn-success mb-2" v-on:click="clear" style="margin-left: 4px;">Limpiar</button>
+
+        </form>
+      </nav>
+
+      <div class="mr-sm-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" style="text-align: left; width: 10%">No. de mes</th>
+              <th scope="col">Capital a Cobrar</th>
+              <th scope="col">Interés a Cobrar</th>
+              <th scope="col">Total a pagar / Mensual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="data in amortization">
+              <th scope="row" style="text-align: left;">{{ data.qty }}</th>
+              <td scope="row">{{ data.capital }}</td>
+              <td scope="row">{{ data.interest }}</td>
+              <td scope="row">{{ data.total }}</td>
+            </tr>
+            <tr>
+              <th style="text-align: left;">Totales</th>
+              <th>{{ currencyFormat(total_payment_capital, 2) }}</th>
+              <th>{{ currencyFormat(total_interest, 2) }}</th>
+              <th>{{ currencyFormat(total_amount, 2) }}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </main>
+    <!-- /main content -->
+
+    <footer>
+
+    </footer>
+    <!--/footer-->
+  </div>
+  <!-- page -->
+  <div id="toTop"></div>
+  <!-- Back to top button -->
+  <!-- COMMON SCRIPTS -->
+  <script src="./js/vue.js"></script>
+  <script src="./js/main.js"></script>
+
+</body>
+</html>
